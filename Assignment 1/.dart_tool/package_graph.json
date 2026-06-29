@@ -1,0 +1,14 @@
+{
+  "roots": [
+    "personal_finance_tracker"
+  ],
+  "packages": [
+    {
+      "name": "personal_finance_tracker",
+      "version": "1.0.0",
+      "dependencies": [],
+      "devDependencies": []
+    }
+  ],
+  "configVersion": 1
+}

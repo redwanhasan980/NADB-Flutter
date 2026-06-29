@@ -1,0 +1,5 @@
+name: personal_finance_tracker
+description: A Dart CLI personal finance tracker.
+version: 1.0.0
+environment:
+  sdk: ^3.0.0
