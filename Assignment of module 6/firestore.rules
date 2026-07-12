@@ -1,0 +1,35 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /notes/{noteId} {
+      allow read: if true;
+      allow create: if validNote(request.resource.data);
+      allow update: if validNote(request.resource.data);
+      allow delete: if true;
+    }
+
+    function validNote(note) {
+      return note.keys().hasAll([
+          'title',
+          'description',
+          'createdAt',
+          'updatedAt'
+        ])
+        && note.keys().hasOnly([
+          'title',
+          'description',
+          'createdAt',
+          'updatedAt'
+        ])
+        && note.title is string
+        && note.title.size() > 0
+        && note.title.size() <= 100
+        && note.description is string
+        && note.description.size() > 0
+        && note.description.size() <= 2000
+        && note.createdAt is timestamp
+        && note.updatedAt is timestamp;
+    }
+  }
+}
