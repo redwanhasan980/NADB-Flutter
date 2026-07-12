@@ -9,9 +9,10 @@ class NotesRepository {
   final CollectionReference<Map<String, dynamic>> _notes;
 
   Stream<List<Note>> watchNotes() {
-    return _notes.orderBy('updatedAt', descending: true).snapshots().map(
-      (snapshot) => snapshot.docs.map(Note.fromFirestore).toList(),
-    );
+    return _notes
+        .orderBy('updatedAt', descending: true)
+        .snapshots()
+        .map((snapshot) => snapshot.docs.map(Note.fromFirestore).toList());
   }
 
   Future<void> createNote({

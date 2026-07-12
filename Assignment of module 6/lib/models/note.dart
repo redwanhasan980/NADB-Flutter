@@ -15,9 +15,7 @@ class Note {
   final DateTime createdAt;
   final DateTime updatedAt;
 
-  factory Note.fromFirestore(
-    DocumentSnapshot<Map<String, dynamic>> document,
-  ) {
+  factory Note.fromFirestore(DocumentSnapshot<Map<String, dynamic>> document) {
     final data = document.data() ?? <String, dynamic>{};
     final createdAt = _dateFrom(data['createdAt']);
     return Note(
