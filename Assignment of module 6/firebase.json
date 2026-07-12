@@ -1,5 +1,1 @@
-{
-  "firestore": {
-    "rules": "firestore.rules"
-  }
-}
+{"firestore":{"rules":"firestore.rules"},"flutter":{"platforms":{"android":{"default":{"projectId":"notes-management-redwan-980","appId":"1:576990133521:android:9a795067d9df9656f760b0","fileOutput":"android/app/google-services.json"}},"dart":{"lib/firebase_options.dart":{"projectId":"notes-management-redwan-980","configurations":{"android":"1:576990133521:android:9a795067d9df9656f760b0","web":"1:576990133521:web:0488c0d69ae05ffcf760b0"}}}}}}
