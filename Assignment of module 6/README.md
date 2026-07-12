@@ -25,7 +25,7 @@ lib/
 ├── screens/notes_list_screen.dart      View and delete interface
 ├── theme/app_theme.dart                Application theme
 ├── app.dart                            App and setup-state widgets
-├── firebase_options.dart               Placeholder for generated options
+├── firebase_options.dart               Generated Firebase project options
 └── main.dart                           Firebase initialization
 ```
 
@@ -33,40 +33,31 @@ lib/
 
 - Flutter 3.32 or newer
 - Dart 3.8 or newer
-- A Google account and Firebase project
-- Firebase CLI and FlutterFire CLI
+- An Android device/emulator or a modern web browser
 
-## Firebase setup (required once)
+## Firebase project
 
-Firebase configuration belongs to your Firebase project and cannot be safely
-guessed. Complete these steps before running the app against a real database.
+The repository is already connected to the Firebase project
+`notes-management-redwan-980` for Android and web. Its free-tier Standard
+Firestore database is located in `asia-south1`, and the included rules have
+been deployed.
 
-1. Create a project in the [Firebase Console](https://console.firebase.google.com/).
-2. In **Build → Firestore Database**, create a Firestore database.
-3. Install and authenticate the command-line tools:
+Project owner: `redwanhasan980@gmail.com`
 
-   ```bash
-   npm install -g firebase-tools
-   dart pub global activate flutterfire_cli
-   firebase login
-   ```
+[Open the Firebase Console](https://console.firebase.google.com/project/notes-management-redwan-980/overview)
 
-4. From this app folder, generate platform configuration:
+To redeploy the rules after changing `firestore.rules`, install the Firebase
+CLI, sign in as the project owner, and run:
 
-   ```bash
-   cd "Assignment of module 6"
-   flutterfire configure
-   ```
+```bash
+npm install -g firebase-tools
+firebase login
+firebase deploy --only firestore:rules
+```
 
-   Select your Firebase project and the platforms you intend to run. Confirm
-   replacement of `lib/firebase_options.dart` when prompted.
-
-5. Deploy the included Firestore rules:
-
-   ```bash
-   firebase use --add
-   firebase deploy --only firestore:rules
-   ```
+If this project is copied to a different Firebase account, install the
+FlutterFire CLI and run `flutterfire configure` to replace the existing
+platform configuration.
 
 The included rules allow unauthenticated classroom-demo access to the `notes`
 collection while validating note fields. Add Firebase Authentication and
@@ -79,8 +70,8 @@ flutter pub get
 flutter run
 ```
 
-Without generated Firebase configuration, the app intentionally displays a
-setup screen instead of crashing.
+The app initializes the generated Android or web Firebase configuration at
+startup and displays an actionable setup screen if initialization fails.
 
 ## Run quality checks
 
