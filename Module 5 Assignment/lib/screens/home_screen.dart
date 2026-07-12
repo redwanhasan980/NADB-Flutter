@@ -37,23 +37,23 @@ class HomeScreen extends StatelessWidget {
         ],
       ),
       body: IndexedStack(index: provider.selectedIndex, children: _screens),
-      bottomNavigationBar: NavigationBar(
-        selectedIndex: provider.selectedIndex,
-        onDestinationSelected: provider.selectScreen,
-        destinations: const [
-          NavigationDestination(
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: provider.selectedIndex,
+        onTap: provider.selectScreen,
+        items: const [
+          BottomNavigationBarItem(
             icon: Icon(Icons.add_circle_outline),
-            selectedIcon: Icon(Icons.add_circle),
+            activeIcon: Icon(Icons.add_circle),
             label: 'Add',
           ),
-          NavigationDestination(
+          BottomNavigationBarItem(
             icon: Icon(Icons.menu_book_outlined),
-            selectedIcon: Icon(Icons.menu_book),
+            activeIcon: Icon(Icons.menu_book),
             label: 'Subjects',
           ),
-          NavigationDestination(
+          BottomNavigationBarItem(
             icon: Icon(Icons.analytics_outlined),
-            selectedIcon: Icon(Icons.analytics),
+            activeIcon: Icon(Icons.analytics),
             label: 'Summary',
           ),
         ],

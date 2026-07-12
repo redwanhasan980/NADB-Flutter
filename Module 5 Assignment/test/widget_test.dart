@@ -22,6 +22,20 @@ void main() {
     expect(find.text('Please enter a valid number'), findsOneWidget);
   });
 
+  testWidgets('rejects a mark outside the allowed range', (tester) async {
+    await tester.pumpWidget(buildApp());
+
+    await tester.enterText(
+      find.widgetWithText(TextFormField, 'Subject name'),
+      'Science',
+    );
+    await tester.enterText(find.widgetWithText(TextFormField, 'Mark'), '101');
+    await tester.tap(find.text('Add subject'));
+    await tester.pump();
+
+    expect(find.text('Mark must be between 0 and 100'), findsOneWidget);
+  });
+
   testWidgets('adds a valid subject and opens the subject list', (
     tester,
   ) async {
@@ -55,5 +69,14 @@ void main() {
       tester.widget<MaterialApp>(find.byType(MaterialApp)).themeMode,
       ThemeMode.dark,
     );
+  });
+
+  testWidgets('uses BottomNavigationBar for all three screens', (tester) async {
+    await tester.pumpWidget(buildApp());
+
+    expect(find.byType(BottomNavigationBar), findsOneWidget);
+    expect(find.text('Add'), findsOneWidget);
+    expect(find.text('Subjects'), findsOneWidget);
+    expect(find.text('Summary'), findsOneWidget);
   });
 }

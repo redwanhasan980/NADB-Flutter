@@ -63,12 +63,13 @@ class AppTheme {
           borderSide: BorderSide(color: scheme.primary, width: 2),
         ),
       ),
-      navigationBarTheme: NavigationBarThemeData(
+      bottomNavigationBarTheme: BottomNavigationBarThemeData(
         backgroundColor: scheme.surfaceContainer,
-        indicatorColor: scheme.secondaryContainer,
-        labelTextStyle: WidgetStatePropertyAll(
-          TextStyle(color: scheme.onSurface, fontWeight: FontWeight.w600),
-        ),
+        selectedItemColor: scheme.primary,
+        unselectedItemColor: scheme.onSurfaceVariant,
+        selectedLabelStyle: const TextStyle(fontWeight: FontWeight.w600),
+        type: BottomNavigationBarType.fixed,
+        elevation: 0,
       ),
       filledButtonTheme: FilledButtonThemeData(
         style: FilledButton.styleFrom(
